@@ -1,0 +1,23 @@
+[
+  {
+    "name": "USDT",
+    "address": "0xEB9262129682Df3FD34A8C001c1AE3B75a6Bf193",
+    "symbol": "USDT",
+    "decimals": 18
+  },
+  {
+    "name": "OpenSwap",
+    "address": "0xA9d603421e2777b8BEa685272611A01fF3bc6523",
+    "symbol": "OSWAP",
+    "decimals": 18,
+    "isCommon": true
+  },  
+  {
+    "address": "0xDe0399014ED809e0E5976D391013dEd315c6B778",
+    "name": "Wrapped Matic",
+    "symbol": "WMATIC",
+    "decimals": 18,
+    "isCommon": true,
+    "isWETH": true
+  }
+]

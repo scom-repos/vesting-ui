@@ -1,0 +1,125 @@
+{
+  "name": "@vesting/main",
+  "version": "0.1.0",
+  "main": "{root}/main/index.js",
+  "env": "mainnet",
+  "init": "{root}/config/index.js",
+  "routes": [
+    {
+      "url": "#/claims",
+      "module": "{root}/claims/index.js",
+      "default": true
+    },
+    {
+      "url": "#/claims/:campaignId",
+      "module": "{root}/claimDetail/index.js"
+    },
+    {
+      "url": "#/locks",
+      "module": "{root}/locks/index.js"
+    },
+    {
+      "url": "#/locks/:campaignId",
+      "module": "{root}/lockDetail/index.js"
+    },
+    {
+      "url": "#/newCampaign",
+      "module": "{root}/newCampaign/index.js"
+    },
+    {
+      "url": "#/locks/:campaignId/addLock",
+      "module": "{root}/newLock/index.js"
+    },
+    {
+      "url": "#/config",
+      "module": "{root}/config/index.js"
+    },
+    {
+      "url": "#/admin",
+      "module": "{root}/admin/index.js"
+    }
+  ],
+  "dependencies": {
+    "moment": "{LIB}/lib/moment/2.29.1/moment.js",
+    "@ijstech/eth-wallet-web3modal": "{LIB}/lib/eth-wallet-web3modal/index.js",
+    "@scom/sdks": "{root}/sdks/index.js",
+    "@vesting/assets": "{root}/assets/index.js",
+    "@vesting/global": "{root}/global/index.js",
+    "@vesting/store": "{root}/store/index.js",
+    "@vesting/common": "{root}/common/index.js"
+  },
+  "menuItems": [
+    {
+      "to": "#/claims",
+      "text": "Claims",
+      "img": "img/menu/Swap-Icon.svg"
+    },
+    {
+      "to": "#/locks",
+      "text": "Locks",
+      "img": "img/menu/Swap-Icon.svg"
+    }
+  ],
+  "params": {
+    "secureComputeInfo": {
+      "link": "#/",
+      "img": "img/sc-logo.svg"
+    },
+    "footerPagesInfo": [],
+    "socialMediaInfo": [],
+    "projectInfo": [
+      {
+        "caption": "@ 2022 IJS Technologies"
+      },
+      {
+        "caption": "Privacy Policy",
+        "link": "#/"
+      }
+    ]
+  },
+  "defaultChainId": 43113,
+  "infuraId": "adc596bf88b648e2a8902bc9093930c5",
+  "networkList": [
+    {
+      "name": "BSC Testnet",
+      "chainId": 97,
+      "img": "img/network/bscMainnet.svg",
+      "rpc": "https://data-seed-prebsc-2-s2.binance.org:8545/",
+      "explorerName": "BSCScan",
+      "explorerTxUrl": "https://testnet.bscscan.com/tx/",
+      "explorerAddressUrl": "https://testnet.bscscan.com/address/"
+    },
+    {
+      "name": "Avalanche FUJI C-Chain",
+      "chainId": 43113,
+      "img": "img/network/avax.svg",	
+      "rpc": "https://api.avax-test.network/ext/bc/C/rpc",
+      "explorerName": "SnowTrace",
+      "explorerTxUrl": "https://testnet.snowtrace.io/tx/",
+      "explorerAddressUrl": "https://testnet.snowtrace.io/address/"
+    }
+  ],
+  "header": {
+    "sloganUrl": "img/banner.svg",
+    "breadcrumb": {
+      "supportedUrl": [
+        "#/claims/:campaignId",
+        "#/locks/:campaignId",
+        "#/locks/:campaignId/addLock"
+      ]
+    },
+    "padding": { "top": 16, "bottom": 16, "left": 15, "right": 15 }
+  },
+  "contractInfo": {
+    "97": {
+      "vaultFactory": {
+        "address": "0x0F4AcB7f01a74a9cbe807ec6Ee707b5731fbF1bC"
+      }
+    },
+    "43113": {
+      "vaultFactory": {
+        "address": "0x6Cc5b54e29b690AF42E096843B35c8a1C6A6Bd7d"
+      }
+    }
+  }
+}

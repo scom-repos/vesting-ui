@@ -1,0 +1,47 @@
+version: "3.1"
+services:
+  install:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && rm -rf node_modules && rm -f package-lock.json && npm i" 
+  update:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm update"     
+  build:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run build"
+  buildContracts:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run build:contracts"    
+  buildLib:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run build:lib" 
+  test:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run test"   
+  deploy:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run deploy"
+  setup:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npm run setup"    
+  testx:
+    image: node:14.17.0
+    volumes:
+      - .:/data
+    command: bash -c "cd /data && npx hardhat flatten contracts/ValidVestingVaultFactory.sol > ValidVestingVaultFactory.sol && npx hardhat flatten contracts/ValidVestingVault.sol > ValidVestingVault.sol"    

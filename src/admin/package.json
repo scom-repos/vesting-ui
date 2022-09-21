@@ -1,0 +1,9 @@
+{
+    "name": "@vesting/admin",
+    "version": "0.1.0",
+    "dependencies": {
+        "@vesting/global": "*",
+        "@vesting/store": "*",
+        "@scom/vesting-sdk": "*"
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@scom/vesting-sdk",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib",
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "build": "npm run build:contracts && npm run build:lib",
+    "build:contracts": "sol2ts contracts.json",
+    "build:lib": "tsc && node esbuild.bundle",
+    "deploy": "ts-node tools/deploy.ts",
+    "test": "mocha --ui tdd --exit --require ts-node/register test/*.test.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@ijstech/eth-wallet": "https://github.com/ijstech/eth-wallet",
+    "@openzeppelin/contracts": "4.7.0",
+    "@types/mocha": "9.1.1",
+    "@types/node": "16.11.23",
+    "esbuild": "0.13.13",
+    "ganache": "7.4.0",
+    "mocha": "9.2.0",
+    "ts-node": "10.5.0",
+    "typescript": "4.5.5"
+  }
+}

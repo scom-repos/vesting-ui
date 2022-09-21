@@ -1,0 +1,10 @@
+{
+    "name": "@vesting/config",
+    "version": "0.1.0",
+    "dependencies": {
+        "@vesting/global": "*",
+        "@vesting/store": "*",
+        "@vesting/main": "*",
+        "@scom/vesting-sdk": "*"
+    }
+}
