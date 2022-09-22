@@ -887,7 +887,8 @@ TokenSelection = __decorateClass([
 ], TokenSelection);
 
 // src/common/API.ts
-var SC_Node_API_URL = "https://api.scom.dev/api/1.0";
+var SC_Node_API_URL = "https://ipfs-gateway.scom.dev/api/1.0";
+var SC_Node_GET_API_URL = "https://ipfs.scom.dev/ipfs/{CID}";
 var updateDataToIPFS = async (data, fileName) => {
   try {
     const response = await fetch(SC_Node_API_URL + "/sync/data", {
@@ -909,7 +910,7 @@ var updateDataToIPFS = async (data, fileName) => {
 };
 var _fetchFileContentByCID = async (ipfsCid) => {
   const IPFS_Gateway = "https://{CID}.ipfs.dweb.link/";
-  let result = await fetch(IPFS_Gateway.replace("{CID}", ipfsCid));
+  let result = await fetch(SC_Node_GET_API_URL.replace("{CID}", ipfsCid));
   return result;
 };
 var fetchFileJsonContentByCID = async (ipfsCid) => {
@@ -918,16 +919,20 @@ var fetchFileJsonContentByCID = async (ipfsCid) => {
   return packageInfoFileContent;
 };
 var fetchFileJsonContentByCID2 = async (rootCID) => {
-  let fileCID;
-  if (rootCID.startsWith("bafk")) {
-    fileCID = rootCID;
-  } else {
-    const response = await fetch(`https://dweb.link/api/v0/ls?arg=${rootCID}`);
-    let jsonContent = await response.json();
-    fileCID = jsonContent.Objects[0].Links[0].Hash;
+  try {
+    let fileCID;
+    if (rootCID.startsWith("bafk")) {
+      fileCID = rootCID;
+    } else {
+      const response = await fetch(`https://dweb.link/api/v0/ls?arg=${rootCID}`);
+      let jsonContent = await response.json();
+      fileCID = jsonContent.Objects[0].Links[0].Hash;
+    }
+    let fileContent = await fetchFileJsonContentByCID(fileCID);
+    return fileContent;
+  } catch (err) {
+    return null;
   }
-  let fileContent = await fetchFileJsonContentByCID(fileCID);
-  return fileContent;
 };
   
   });

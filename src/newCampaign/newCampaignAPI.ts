@@ -18,7 +18,7 @@ const newCampaign = async (name: string, imgUrl: string, token: string) => {
   let receipt = await vault.newCampaign({
     token: token,
     ownerFrozen: true,
-    dataUri: ipfsCid
+    dataUri: ipfsCid.cid
   })
   return receipt;
 }

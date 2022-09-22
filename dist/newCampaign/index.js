@@ -69,7 +69,7 @@
     let receipt = await vault.newCampaign({
       token,
       ownerFrozen: true,
-      dataUri: ipfsCid
+      dataUri: ipfsCid.cid
     });
     return receipt;
   };

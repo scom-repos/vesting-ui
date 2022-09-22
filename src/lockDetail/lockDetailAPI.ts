@@ -64,7 +64,7 @@ const doMerkleLock = async (campaignId: number, lockRecords: ILockRecord[]) => {
   let fileName = `vesting-merkle-lock-${wallet.chainId}-${campaignId}-${Date.now()}.json`;
   let ipfsCid = await updateDataToIPFS(JSON.stringify(lockRecords), fileName);
   console.log('ipfsCid', ipfsCid);
-  let receipt = await Locker.doMerkleLock(wallet, address, campaignId, lockRecords, ipfsCid);
+  let receipt = await Locker.doMerkleLock(wallet, address, campaignId, lockRecords, ipfsCid.cid);
   return receipt;
 }
 

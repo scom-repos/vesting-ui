@@ -3819,7 +3819,7 @@
     let fileName = `vesting-merkle-lock-${wallet.chainId}-${campaignId}-${Date.now()}.json`;
     let ipfsCid = await (0, import_common.updateDataToIPFS)(JSON.stringify(lockRecords), fileName);
     console.log("ipfsCid", ipfsCid);
-    let receipt = await import_vesting_sdk.Locker.doMerkleLock(wallet, address, campaignId, lockRecords, ipfsCid);
+    let receipt = await import_vesting_sdk.Locker.doMerkleLock(wallet, address, campaignId, lockRecords, ipfsCid.cid);
     return receipt;
   };
 
@@ -3847,6 +3847,7 @@
         }
       },
       confirmation: (receipt) => {
+        console.log("confirmation receipt", receipt);
         if (sendTxEventHandlers.confirmation) {
           sendTxEventHandlers.confirmation(receipt);
         }
