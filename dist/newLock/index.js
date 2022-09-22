@@ -3789,7 +3789,7 @@
       let lockInfoItem = myLocks[i];
       if (lockInfoItem.lockType == import_vesting_sdk.LockType.Merkle) {
         if (lockInfoItem.dataUri) {
-          let lockRecordList = await (0, import_common.fetchFileJsonContentByCID2)(lockInfoItem.dataUri);
+          let lockRecordList = await (0, import_common.fetchFileJsonContentByCID)(lockInfoItem.dataUri);
           for (let j = 0; j < lockRecordList.length; j++) {
             let lockRecordItem = lockRecordList[j];
             lockExtInfoList.push(__spreadProps(__spreadValues({}, lockInfoItem), {
@@ -3802,7 +3802,7 @@
         }
       }
     }
-    let campaignIpfsData = await (0, import_common.fetchFileJsonContentByCID2)(campaignInfo.dataUri);
+    let campaignIpfsData = await (0, import_common.fetchFileJsonContentByCID)(campaignInfo.dataUri);
     let locksDetailsObj = {
       campaignName: campaignIpfsData.name,
       campaignImgUrl: campaignIpfsData.imgUrl,

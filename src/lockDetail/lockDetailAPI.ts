@@ -2,7 +2,7 @@ import { Wallet, BigNumber, Utils, Erc20 } from "@ijstech/eth-wallet";
 import { Contracts, Locker, ILockRecord, ILockInfo, IVestingItem, LockType } from '@scom/vesting-sdk';
 import { getVaultContractAddress, getTokenMap } from '@vesting/store'
 import { ITokenObject } from '@vesting/global';
-import { updateDataToIPFS, fetchFileJsonContentByCID, fetchFileJsonContentByCID2 } from '@vesting/common';
+import { updateDataToIPFS, fetchFileJsonContentByCID } from '@vesting/common';
 
 export interface ILockExtInfo extends ILockInfo {
   locked: string;
@@ -32,7 +32,7 @@ const getLocksDetails = async (campaignId: number) => {
     let lockInfoItem = myLocks[i];   
     if (lockInfoItem.lockType == LockType.Merkle) {
       if (lockInfoItem.dataUri) {
-        let lockRecordList = await fetchFileJsonContentByCID2(lockInfoItem.dataUri) as ILockRecord[];
+        let lockRecordList = await fetchFileJsonContentByCID(lockInfoItem.dataUri) as ILockRecord[];
         for (let j = 0; j < lockRecordList.length; j++) {
           let lockRecordItem = lockRecordList[j];
           lockExtInfoList.push({
@@ -47,7 +47,7 @@ const getLocksDetails = async (campaignId: number) => {
     }
   }
 
-  let campaignIpfsData = await fetchFileJsonContentByCID2(campaignInfo.dataUri);
+  let campaignIpfsData = await fetchFileJsonContentByCID(campaignInfo.dataUri);
   let locksDetailsObj: ILocksDetails = {
     campaignName: campaignIpfsData.name,
     campaignImgUrl: campaignIpfsData.imgUrl,

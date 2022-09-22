@@ -3787,7 +3787,7 @@
       let lockInfoItem = lockInfoList[i];
       if (lockInfoItem.lockType == import_vesting_sdk.LockType.Merkle) {
         if (lockInfoItem.dataUri) {
-          let lockRecordList = await (0, import_common.fetchFileJsonContentByCID2)(lockInfoItem.dataUri);
+          let lockRecordList = await (0, import_common.fetchFileJsonContentByCID)(lockInfoItem.dataUri);
           let vestingList = lockRecordList.map((v) => {
             return __spreadProps(__spreadValues({}, v), { campaignId });
           });

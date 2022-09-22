@@ -179,7 +179,7 @@
       this.copiedCardList = [];
       for (let i = 0; i < myCampaignList.length; i++) {
         if (myCampaignList[i].dataUri) {
-          let data = await api_common.fetchFileJsonContentByCID2(myCampaignList[i].dataUri);
+          let data = await api_common.fetchFileJsonContentByCID(myCampaignList[i].dataUri);
           let item = {
             id: myCampaignList[i].id,
             icon: data.imgUrl,

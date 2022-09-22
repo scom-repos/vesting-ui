@@ -2,7 +2,7 @@ import { Wallet, BigNumber, Utils, Erc20 } from "@ijstech/eth-wallet";
 import { Contracts, Claimant, IVestingItem, LockType, ILockRecord, ILockInfo } from '@scom/vesting-sdk';
 import { getVaultContractAddress, getTokenMap } from '@vesting/store'
 import { ITokenObject } from '@vesting/global';
-import { fetchFileJsonContentByCID, fetchFileJsonContentByCID2 } from '@vesting/common';
+import { fetchFileJsonContentByCID } from '@vesting/common';
 
 interface ILockExtInfo extends ILockInfo {
   merkleTreeData: IVestingItem[];
@@ -34,7 +34,7 @@ const getClaimsDetails = async (campaignId: number) => {
     let lockInfoItem = lockInfoList[i];   
     if (lockInfoItem.lockType == LockType.Merkle) {
       if (lockInfoItem.dataUri) {
-        let lockRecordList = await fetchFileJsonContentByCID2(lockInfoItem.dataUri) as ILockRecord[];
+        let lockRecordList = await fetchFileJsonContentByCID(lockInfoItem.dataUri) as ILockRecord[];
         let vestingList = lockRecordList.map(v => {return {...v, campaignId}});
         for (let j = 0; j < vestingList.length; j++) {
           let vestingItem = vestingList[j];

@@ -116,7 +116,7 @@
             let lockInfoItem = myCampaignItem.lockInfoList[j];
             if (lockInfoItem.lockType == import_vesting_sdk.LockType.Merkle) {
               if (lockInfoItem.dataUri) {
-                let lockRecordList = await (0, import_common.fetchFileJsonContentByCID2)(lockInfoItem.dataUri);
+                let lockRecordList = await (0, import_common.fetchFileJsonContentByCID)(lockInfoItem.dataUri);
                 let itemfound = lockRecordList.find((v) => v.account.toLowerCase() == wallet.address.toLowerCase());
                 if (itemfound) {
                   lockFound = true;
@@ -128,7 +128,7 @@
         }
         if (!lockFound && myCampaignItem.claimInfoList.length == 0)
           continue;
-        let campaignIpfsData = await (0, import_common.fetchFileJsonContentByCID2)(campaignInfo.dataUri);
+        let campaignIpfsData = await (0, import_common.fetchFileJsonContentByCID)(campaignInfo.dataUri);
         myCampaignItem.campaignName = campaignIpfsData.name;
         myCampaignItem.campaignImgUrl = campaignIpfsData.imgUrl;
         if (myCampaignItem.claimInfoList.length > 0) {

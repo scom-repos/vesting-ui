@@ -32,28 +32,7 @@ const fetchFileJsonContentByCID = async (ipfsCid: string) => {
   return packageInfoFileContent;
 }
 
-//Temporary hack
-const fetchFileJsonContentByCID2 = async (rootCID: string) => {
-  try {
-    let fileCID;
-    if (rootCID.startsWith('bafk')) {
-      fileCID = rootCID;
-    }
-    else {
-      const response = await fetch(`https://dweb.link/api/v0/ls?arg=${rootCID}`);
-      let jsonContent = await response.json();
-      fileCID = jsonContent.Objects[0].Links[0].Hash;
-    }
-    let fileContent = await fetchFileJsonContentByCID(fileCID)
-    return fileContent;
-  }
-  catch(err) {
-    return null;
-  }
-}
-
 export {
   updateDataToIPFS,
-  fetchFileJsonContentByCID,
-  fetchFileJsonContentByCID2
+  fetchFileJsonContentByCID
 }

@@ -2,7 +2,7 @@ import { Wallet, BigNumber, Utils, Erc20 } from "@ijstech/eth-wallet";
 import { Contracts, Claimant, IVestingItem, getCampaignInfoList, ICampaignInfo, ILockInfo, LockType, ILockRecord } from '@scom/vesting-sdk';
 import { getVaultContractAddress, getTokenMap } from '@vesting/store'
 import { ITokenObject } from '@vesting/global';
-import { fetchFileJsonContentByCID, fetchFileJsonContentByCID2 } from '@vesting/common';
+import { fetchFileJsonContentByCID } from '@vesting/common';
 
 interface ICampaignExtInfo extends ICampaignInfo {
   campaignName: string;
@@ -52,7 +52,7 @@ const getMyCampaigns = async () => {
           let lockInfoItem = myCampaignItem.lockInfoList[j];
           if (lockInfoItem.lockType == LockType.Merkle) {
             if (lockInfoItem.dataUri) {
-              let lockRecordList = await fetchFileJsonContentByCID2(lockInfoItem.dataUri) as ILockRecord[];
+              let lockRecordList = await fetchFileJsonContentByCID(lockInfoItem.dataUri) as ILockRecord[];
               let itemfound = lockRecordList.find(v => v.account.toLowerCase() == wallet.address.toLowerCase());
               if (itemfound) {
                 lockFound = true;
@@ -64,7 +64,7 @@ const getMyCampaigns = async () => {
       }
       if (!lockFound && myCampaignItem.claimInfoList.length == 0) continue;
 
-      let campaignIpfsData = await fetchFileJsonContentByCID2(campaignInfo.dataUri);
+      let campaignIpfsData = await fetchFileJsonContentByCID(campaignInfo.dataUri);
       myCampaignItem.campaignName = campaignIpfsData.name;
       myCampaignItem.campaignImgUrl = campaignIpfsData.imgUrl;
 
