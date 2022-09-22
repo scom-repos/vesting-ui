@@ -317,9 +317,9 @@ export class Config extends Module {
 
   render() {
     return (
-      <i-panel height='100%' width='100%' background={Theme.background.modal}>
+      <i-panel height='100%' width='100%'>
         <i-vstack id="pnlMain" margin={{left: '1.5rem', right: '1.5rem', top: '1rem', bottom: '1rem'}} gap="1rem">
-          <i-hstack id="stackFirstStep" padding={{left: '1.5rem', right: '1.5rem', top: '1rem', bottom: '1rem'}} border={{ radius: 30 }} horizontalAlignment="space-between" background='#000000'>
+          <i-hstack id="stackFirstStep" padding={{left: '1.5rem', right: '1.5rem', top: '1rem', bottom: '1rem'}} border={{ radius: 30 }} horizontalAlignment="space-between" background={{ color: '#000000' }}>
             <i-hstack verticalAlignment="center" gap={15}>
               <i-label caption="STEP 1" font={{ size: '20px', name: 'Montserrat SemiBold', color: Theme.colors.primary.main }} />
               <i-label caption="Click Confirm to Create a Profile" font={{ size: '20px', name: 'Montserrat SemiBold' }} />
@@ -327,7 +327,7 @@ export class Config extends Module {
             <i-button
               id="btnConfirm" caption='Confirm' width='200px' height='50' onClick={this.clickConfirm}
               rightIcon={{spin: true, visible: false}}
-              background={Theme.background.main} border={{ radius: 12, width: 2, style: 'solid', color: '#FFB82F' }}
+              background={{ color: Theme.background.main }} border={{ radius: 12, width: 2, style: 'solid', color: '#FFB82F' }}
             />
           </i-hstack>          
         </i-vstack>

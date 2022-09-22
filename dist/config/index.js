@@ -8315,8 +8315,7 @@
     render() {
       return /* @__PURE__ */ this.$render("i-panel", {
         height: "100%",
-        width: "100%",
-        background: Theme2.background.modal
+        width: "100%"
       }, /* @__PURE__ */ this.$render("i-vstack", {
         id: "pnlMain",
         margin: { left: "1.5rem", right: "1.5rem", top: "1rem", bottom: "1rem" },
@@ -8326,7 +8325,7 @@
         padding: { left: "1.5rem", right: "1.5rem", top: "1rem", bottom: "1rem" },
         border: { radius: 30 },
         horizontalAlignment: "space-between",
-        background: "#000000"
+        background: { color: "#000000" }
       }, /* @__PURE__ */ this.$render("i-hstack", {
         verticalAlignment: "center",
         gap: 15
@@ -8343,7 +8342,7 @@
         height: "50",
         onClick: this.clickConfirm,
         rightIcon: { spin: true, visible: false },
-        background: Theme2.background.main,
+        background: { color: Theme2.background.main },
         border: { radius: 12, width: 2, style: "solid", color: "#FFB82F" }
       }))), /* @__PURE__ */ this.$render("i-vstack", {
         id: "pnlErrorMsg",
